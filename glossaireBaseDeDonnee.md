@@ -1,7 +1,8 @@
- #GLOSSAIRE
- ##BASE DE DONNEES 
- ###Ressources 
+ # GLOSSAIRE <br/>
+ ## BASE DE DONNEES <br/>
+ ### Ressources <br/>
  * https://fr.wikibooks.org/wiki/Les_bases_de_donn%C3%A9es/Le_vocabulaire_de_base_des_BDD
+ * https://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Lexique_en_fran%C3%A7ais_des_bases_de_donn%C3%A9es
  
 * **Base de données** : <br/>
 Système d'organisation de l'information conçu pour une localisation et une mise à jour rapide et facile des données.
@@ -11,7 +12,11 @@ Les donnéesà numériséer sont appellé des "enregistrements".
 * **Les tables** : <br/>
 Liste de données.<br/>
 Lieux où sont stockés les enregistrements et leurs attibuts.
-Les attributs de même nom et type sont placés sur une même colonne, less enregistrement se font ligne par ligne.
+Les attributs de même nom et type sont placés sur une même colonne, less enregistrement se font ligne par ligne.<br/>
+Il existe un vocabulaire assez précis pour nommer les enregistrements, colonnes et autres particularités d'une table. Ceux-ci sont illustrés dans les deux schémas ci-dessous. 
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/ae/Figure_structure_relationnelle.png "nommer les enregistrements")
+![alt text](https://upload.wikimedia.org/wikipedia/commons/f/fd/Table_relationnel.png "nommer les enregistrements")
+
 
 * **Enregistrements** : <br/>
 Regroupes l'ensembles des informations liées à une personnes, object ...<br/>
@@ -38,6 +43,35 @@ Exemple: <br/>
 -- son groupe sanguin : chaine caractère ;<br/>
 -- son groupe rhésus : booléen ;<br/>
 -- sa tension artérielle : nombre à virgule ;<br/>
+
+* **Les différents types de données** : <br/>
+Choisir un mauvais type de donnée pourrait entraîner :
+-- Un gaspillage de mémoire (ex. : si vous stockez de toutes petites données dans une colonne faite pour stocker de grosses quantités de données) ;
+-- Des problèmes de performance (ex. : il est plus rapide de faire une recherche sur un nombre que sur une chaîne de caractères) ;
+-- Un comportement contraire à celui attendu (ex. : trier sur un nombre stocké comme tel, ou sur un nombre stocké comme une chaîne de caractères ne donnera pas le même résultat) ;
+-- L'impossibilité d'utiliser des fonctionnalités propres à un type de données (ex. : stocker une date comme une chaîne de caractères vous prive des nombreuses fonctions temporelles disponibles).
+<br/>
+**Types numériques**
+https://openclassrooms.com/fr/courses/1959476-administrez-vos-bases-de-donnees-avec-mysql/1960456-distinguez-les-differents-types-de-donnees <br/>
+Les nombres entiers, et les nombres décimaux.<br/>
+Les types de données qui acceptent des nombres entiers comme valeurs sont désignés par le mot-clé ``INT``, et ses déclinaisons ``TINYINT``, ``SMALLINT``, ``MEDIUMINT``  et ``BIGINT``. 
+ ![alt text](int.PNG "les int")
+ L'attribut ``UNSIGNED``
+On ne précise pas s'il s'agit d'une valeur positive ou négative (on aura donc toujours une valeur positive).
+ Dans ce cas, la longueur de l'intervalle reste la même, mais les valeurs possibles sont décalées, le minimum valant 0. Pour les ``TINYINT``, on pourra par exemple aller de 0 à 255.
+ Limiter la taille d'affichage et l'attribut ``ZEROFILL``
+
+
+* **Tuple**:<br/>
+Tuple = ligne = enregistrement
+
+* **n-uplet**:<br/>
+ensemble de valeur
+
+
+* **Valeur NULL**:<br/>
+
+
  
 * **Valeur NULL**:<br/>
 Dans certains cas, il arrive que certaines informations ne soient pas connues lorsqu'on crée l'enregistrement. 
@@ -56,7 +90,7 @@ Par exemple :
  Le stockage d'enregistrement ce font les un à la suite des autres. On ne peut placer de nouveaux enregistrment entre 2 exitant. <br/>
  Les enregristrement n'ont pas de liens les un avec les autres. C'est au programme de  de creer les liens entre les données et entres les fichiers. Cela ce fait nativement grace aubase de données. Grace au SGBD, le rangement des des informations dans un fichier n 'est pas a spécifier par le prgrammeur. 
  Le SGBD gère la manière de ranger les informations sur le disque dur. Mais leur intérêt principal est de modéliser les relations entre chaque liste d'enregistrement efficacement, d'une manière qui permet de traiter les données rapidement. 
- 
+
   
  * **Modèles relationnel**  : <br/>
 Les bases de données utilisent des méthodes assez distinctes pour représenter les relations entre informations, méthodes qui permettent de distinguer les BDD arborescentes, en réseau, relationnelles, déductives et orientées-objet. Les plus simples sont de loin les BDD en réseau et arborescentes.
@@ -68,7 +102,6 @@ Les bases de données utilisent des méthodes assez distinctes pour représenter
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Object-Oriented_Model.svg/598px-Object-Oriented_Model.svg.png "BDD sans pointeurs")
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Relational_Model.svg/543px-Relational_Model.svg.png "BDD sans pointeurs")
 
-* **Le modèle relationnel**:<br/>
 
 * **Clé étrangère**  : <br/>
 Champ spécifique d'une table correspondant à un identifiant unique sur une autre table (clé primaire) permet de garantir la cohérence des données.. 
@@ -86,5 +119,14 @@ Accélérateur de traitements (tri, recherche, ...), un index est une table A li
 Concept de correspondance, une relation dans un ensemble est une proposition qui lie un certain nombre d'éléments, une relation dans une base de données est une table liée 
 
 
-* **Les différents types de données** : <br/>
 
+
+
+* **CRUD**: <br/>
+Gérer des données dans une table demande de pouvoir faire quatre opérations de base : <br/>
+--CREATE (créer) : créer une nouvelle ligne ; <br/>
+--READ (lecture) : récupérer une ligne dans la table ;<br/>
+--UPDATE (modifier) : modifier le contenu d'une ligne ou d'un attribut ;<br/>
+--DELETE (supprimer) : supprimer une ligne devenue inutile.<br/>
+
+Ces quatre opérations sont regroupées sous l'acronyme CRUD. 
