@@ -44,41 +44,66 @@ Pour que les changements prennent effet, appliquez immédiatement les privilège
 ## MANIPULATION 
 **Sélection sur une table :**
 * Lister tous les articles : <br/>
-``SELECT * FROM articles;``
+````SELECT * FROM articles;````
 * Lister les articles publiés depuis le « 01/01/2020 » qui ont une importance supérieur à 2 : <br/>
-``SELECT `Importance`,`Date`,`Titre` FROM `articles` WHERE (`Date` >'2020-01-01') AND (`Importance` > 2)``
+````SELECT `Importance`,`Date`,`Titre` FROM `articles` WHERE (`Date` >'2020-01-01') AND (`Importance` > 2)````
 * Lister les articles visibles aujourd’hui, par date de publication décroissante  : <br/>
-``SELECT`Titre`,`Date`,`DateFin` FROM `articles` WHERE (`DateFin`>'2020-01-22') ORDER BY `DateFin` DESC``
+````SELECT`Titre`,`Date`,`DateFin` FROM `articles` WHERE (`DateFin`>'2020-01-22') ORDER BY `DateFin` DESC````
 <br/>
 **Sélection sur plusieurs tables:**
 * Lister les articles avec le nom de leur catégorie : <br/>
-``SELECT `Article_Titre`,`Categorie_Nom Categorie` FROM `articles_categories` WHERE 1``
+````SELECT `Article_Titre`,`Categorie_Nom Categorie` FROM `articles_categories` WHERE 1````
 * Lister tous les articles de la catégorie « Loisirs » : <br/>
-``SELECT `Categorie_Nom Categorie`
+````SELECT `Categorie_Nom Categorie`
   FROM `articles_categories` 
-  WHERE (`Categorie_Nom Categorie`='Loisirs')``<br/>
+  WHERE (`Categorie_Nom Categorie`='Loisirs')````<br/>
 * Compter les commentaires publiés par le pseudo « Matéo »:<br/>
-``SELECT count(*) as `Auteurs_Pseudo`,`Titre`  FROM `articles` WHERE  (`Auteurs_Pseudo`= 'Mateo')``
+````SELECT count(*) as `Auteurs_Pseudo`,`Titre`  FROM `articles` WHERE  (`Auteurs_Pseudo`= 'Mateo')````
 * Lister les articles rédigés par le pseudo « Valentine » ou « Matéo » (afficher l’auteur) :<br/>
-``SELECT `Titre`,`Auteurs_Pseudo` FROM `articles` WHERE(`Auteurs_Pseudo`= 'Mateo')OR  (`Auteurs_Pseudo`= 'Valentine')``
+````SELECT `Titre`,`Auteurs_Pseudo` FROM `articles` WHERE(`Auteurs_Pseudo`= 'Mateo')OR  (`Auteurs_Pseudo`= 'Valentine')````
 * Lister les articles visibles aujourd’hui avec le nom de la catégorie et le pseudo de l’auteur, par date de publication décroissante  :<br/>
-``SELECT`Auteurs_Pseudo`,`Titre`,`Date`,`categorie_Nom Categorie`
+````SELECT`Auteurs_Pseudo`,`Titre`,`Date`,`categorie_Nom Categorie`
   FROM `articles` 
   INNER JOIN  `articles_categories` 
   ON articles.Titre=articles_categories.Article_Titre 
   WHERE (`DateFin`>='2020-01-22')
-  ORDER BY `Date` DESC``
+  ORDER BY `Date` DESC````
 <br/>
 **Insertion et mise à jour et suppression de données**
 
 * Ajouter un article avec comme catégorie « Loisirs » et l’auteur qui a le pseudo «Matéo » :<br/>
-``INSERT INTO `articles`(`Titre`, `Texte`, `Date`, `Importance`, `DateFin`, `Auteurs_Pseudo`) 
+````INSERT INTO `articles`(`Titre`, `Texte`, `Date`, `Importance`, `DateFin`, `Auteurs_Pseudo`) 
   VALUES ('Article Inserer en commande SQL',' ctrop marrant blablablbablablabalbalablblablab','2020-01-22',5,'2020-03-22','Matéo');
   INSERT INTO `articles_categories`(`Article_Titre`, `Categorie_Nom Categorie`) 
-  VALUES ('Article Inserer en commande SQL','Loisirs')``
+  VALUES ('Article Inserer en commande SQL','Loisirs')````
 * Renommer le pseudo « Valentine » par « Val »  :<br/>
-``UPDATE `auteurs` SET `Pseudo`='Val' WHERE `Pseudo`='Valentin'``
+````UPDATE `auteurs` SET `Pseudo`='Val' WHERE `Pseudo`='Valentin'````
 * Supprimer les commentaires qui n’ont que “Sans avis” :<br/>
-``DELETE FROM `commentaires` WHERE(`Texte`='Sans Avis')``
+````DELETE FROM `commentaires` WHERE(`Texte`='Sans Avis')````
 * Supprimer l’auteur avec un pseudo « Matéo » :<br/>
-``DELETE FROM `auteurs` WHERE (`Pseudo`='Matéo')``
+````DELETE FROM `auteurs` WHERE (`Pseudo`='Matéo')````
+  <br/>
+  <br/>
+**Bonus 1 :**
+* Lister les articles (avec leur catégorie) indiquant « Sport » dans le titre  :<br/>
+``*``
+* Lister les articles (avec leur catégorie) indiquant « Sport » dans le titre et «Biathlon » dans le texte  :<br/>
+``*``
+* Lister les articles ayant « Bravo » dans le commentaire  :<br/>
+``*``
+* Lister les articles publiés aujourd’hui et ayant « Bravo » dans le commentaire, compléter l’affichage avec les 20 premiers caractères du commentaire  :<br/>
+``*``
+* Lister les articles rédigés par « Matéo » avec un commentaire ajouté par « Matéo»  :<br/>
+``*``
+* Lister les articles avec un commentaire de plus de 20 caractères, compléter l’affichage avec les commentaires  :<br/>
+``*``
+  <br/>
+**Bonus 2 :**
+* Lister les articles ayant un commentaire dans les 2 heures suivant leur publication  :<br/>
+``*``
+* Lister le titre des articles et le nombre de commentaires de chacun d’entre eux  :<br/>
+``*``
+* Lister les articles qui n’ont pas de commentaire  :<br/>
+``*``
+* Lister les auteurs qui ont rédigés des articles mais pas de commentaires  :<br/>
+``*``
